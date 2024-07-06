@@ -1,0 +1,39 @@
+{% extends "admin/adminpage.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">NAME</th>
+      <th scope="col">FEEBACK</th>
+      <th scope="col">REPLY</th>
+      <th scope="col">DATE</th>
+    </tr>
+  </thead>
+  {% for i in adminfeedback %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.user}}</td>
+      <td>{{i.feedback}}</td>
+      <td>
+        {% if i.reply == None %}
+        <button type="submit" class="btn btn-success"><a type="submit" href="{% url 'feedupdate' i.id %}">REPLY</a></button>
+        {% else %}
+
+        <p>{{i.reply}}</p>
+
+        {% endif %}
+
+      </td>
+      <td>{{i.date}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}

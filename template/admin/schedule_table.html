@@ -1,0 +1,31 @@
+{% extends "admin/adminpage.html" %}
+
+{% block content %}
+
+<form method="post">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">DATE</th>
+      <th scope="col">STARTING TIME</th>
+      <th scope="col">ENDING TIME</th>
+      <th scope="col">STATUS</th>
+       <th scope="col">DISABLE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in schedule %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.date}}</td>
+      <td>{{i.starting_time}}</td>
+      <td>{{i.ending_time}}</td>
+        <td>{{i.status}}</td>
+      <td><a class="btn btn-danger" href="{% url 'disable' i.id %}">DISABLE</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</form>
+{% endblock %}

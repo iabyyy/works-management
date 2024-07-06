@@ -1,0 +1,33 @@
+{% extends "admin/adminpage.html" %}
+
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="form-control-label">Date</label>
+        <input required class="form-control" readonly value="{{feedback.date}}">
+
+    </div>
+    <div class="form-group">
+        <label class="form-control-label">feedback</label>
+        <input required class="form-control" readonly value="{{feedback.feedback}}">
+    </div>
+    <div>
+        <label class="form-control-label">reply</label>
+        <textarea rows="7" required name="reply" class="form-control"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">SUBMIT</button>
+    </div>
+     {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+
+
+</form>
+
+{% endblock %}

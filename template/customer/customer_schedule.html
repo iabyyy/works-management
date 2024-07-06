@@ -1,0 +1,35 @@
+{% extends "customer/customerpage.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">DATE</th>
+      <th scope="col">STARTING TIME</th>
+      <th scope="col">ENDING TIME</th>
+      <th scope="col">BOOKING</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in customer_schedule %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.date}}</td>
+      <td>{{i.starting_time}}</td>
+      <td>{{i.ending_time}}</td>
+        <td><a href="{% url 'customer_booking' i.id %}" class="btn btn-outline-success" >BOOK SLOT</a></td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+
+     {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "customer/customerpage.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">FEEDBACK</th>
+      <th scope="col">DATE</th>
+      <th scope="col">REPLY</th>
+    </tr>
+  </thead>
+  {% for i in feedview %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.feedback}}</td>
+      <td>{{i.date}}</td>
+      <td>
+        {% if i.reply == None %}
+        <p>No reply</p>
+        {% else %}
+
+        <p>{{i.reply}}</p>
+      {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "manager/managerpage.html" %}
+
+{% block content %}
+
+{% for i in profile_view %}
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{i.document.url}}" height="300px" width="200px">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" >
+          <h5 class="text-start ms-5 text-dark">PROFILE VIEW</h5>
+          <p class="text-start ms-5">{{i.name}}</p>
+          <p class="text-start ms-5">{{i.contact_no}}</p>
+          <p class="text-start ms-5">{{i.email}}</p>
+          <p class="text-start ms-5">{{i.address}}</p>
+          <p class="text-start ms-5">{{i.employee_id}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

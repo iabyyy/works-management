@@ -1,0 +1,38 @@
+{% extends "customer/customerpage.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">DATE</th>
+      <th scope="col">STARTING TIME</th>
+      <th scope="col">ENDING TIME</th>
+      <th scope="col">STATUS</th>
+    </tr>
+  </thead>
+  {% for i in view %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.schedule.date}}</td>
+      <td>{{i.schedule.starting_time}}</td>
+        <td>{{i.schedule.ending_time}}</td>
+       <td>
+         {% if i.status == 0 %}
+         <p class="text-warning">Pending....</p>
+         {% elif i.status == 1 %}
+         <p class="text-success">Approved</p>
+         {% else %}
+         <p class="text-danger">rejected</p>
+         {% endif %}
+
+       </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

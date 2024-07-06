@@ -1,0 +1,51 @@
+{% extends "customer/customerpage.html" %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">CUSTOMER</th>
+      <th scope="col">CATEGORY</th>
+      <th scope="col">VEHICLE NO</th>
+      <th scope="col">VEHICLE NAME</th>
+      <th scope="col">VEHICLE MODEL</th>
+      <th scope="col">VEHICLE BRAND</th>
+      <th scope="col">PROBLEM</th>
+      <th scope="col">DATE</th>
+      <th scope="col">COST</th>
+      <th scope="col">STATUS</th>
+
+
+    </tr>
+  </thead>
+  {% for i in vehiclestatus %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.customer}}</td>
+      <td>{{i.category}}</td>
+      <td>{{i.vehicle_no}}</td>
+      <td>{{i.vehicle_name}}</td>
+      <td>{{i.vehicle_model}}</td>
+      <td>{{i.vehicle_brand}}</td>
+      <td>{{i.problem_description}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.cost}}</td>
+     <td>{{i.status}}</td>
+      <td>
+        {% if i.status == 'repairing done' and i.pay == 0 %}
+        <button class="btn btn-success"><a type="submit" href="{% url 'payment' i.id %}">PAY</a></button>
+        {% elif i.status == 'repairing done' and i.pay == 1 %}
+        <p class="text text-success">PAID</p>
+        {% else %}
+        {% endif %}
+      </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
